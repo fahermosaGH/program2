@@ -1,0 +1,25 @@
+<section class="panel">
+  <h1>Nuestras Sucursales</h1>
+
+  <div *ngIf="loading">Cargando...</div>
+  <div *ngIf="!loading && error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="tabla-ventas-wrap">
+    <table class="tabla-ventas">
+      <thead>
+        <tr>
+          <th>Sucursal</th>
+          <th class="num">Empleados</th>
+          <th>Dirección</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of sucursales">
+          <td>{{ s.Nombre_Suc }}</td>
+          <td class="num">{{ s.Cant_Emp_Suc }}</td>
+          <td>{{ s.Dir_Suc }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

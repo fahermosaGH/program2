@@ -1,0 +1,4 @@
+.tabla-ventas { width: 100%; border-collapse: collapse; }
+.tabla-ventas th, .tabla-ventas td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+.tabla-ventas th:first-child, .tabla-ventas td:first-child { text-align: center; }
+.tabla-ventas thead th { background: #4e5155; color: #fff; }

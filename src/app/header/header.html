@@ -1,0 +1,25 @@
+<header class="lb-header">
+  <div class="lb-container">
+    <!-- Marca -->
+    <a class="lb-brand" routerLink="/inicio" aria-label="Inicio">
+      <span class="dot dot-orange"></span>
+      <span class="dot dot-teal"></span>
+      <span class="dot dot-blue"></span>
+      <span class="lb-wordmark">Sistema de Administracion de Empresa</span>
+    </a>
+
+    <!-- Nav (se puede ocultar/mostrar con tu botón) -->
+    <nav class="lb-nav" *ngIf="navVisible">
+      <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
+      <a routerLink="/clientes" routerLinkActive="active">Clientes</a>
+      <a routerLink="/ventas" routerLinkActive="active">Ventas</a>
+    </nav>
+
+    <!-- Botón toggle -->
+    <button class="lb-cta" type="button" (click)="barra()">{{ ButName }}</button>
+  </div>
+</header>
+
+
+

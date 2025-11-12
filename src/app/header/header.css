@@ -1,0 +1,72 @@
+:host { 
+  display:block;
+  /* 👇 Variables locales al componente (sirven adentro del header) */
+  --lb-bg:#14181c;
+  --lb-text:#d8d9db;
+  --lb-strong:#9c9c9c;
+  --lb-muted:#8ea1b2;
+  --lb-accent:#00e054;
+}
+
+/* Header */
+.lb-header{
+  position: sticky; top:0; z-index: 50;
+  background: var(--lb-bg, #14181c); /* fallback por si acaso */
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.lb-container{
+  height:60px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 16px;
+  display:flex; align-items:center; gap:16px;
+}
+
+/* Marca */
+.lb-brand{
+  display:flex; align-items:center; gap:8px;
+  color:var(--lb-strong);
+  font-weight:700; letter-spacing:.2px;
+}
+.dot{ width:14px; height:14px; border-radius:50%; display:inline-block }
+.dot-orange{ background:#ff7e2a }
+.dot-teal{ background:#2ad2c9 }
+.dot-blue{ background:#3d9cff }
+.lb-wordmark{ margin-left:4px }
+
+/* Nav */
+.lb-nav{
+  display:flex; gap:20px; margin-left:12px;
+  overflow:auto; scrollbar-width:none; flex:1;
+}
+.lb-nav::-webkit-scrollbar{ display:none }
+.lb-nav a{
+  color:var(--lb-text);
+  text-decoration:none;
+  padding:8px 0;
+  border-bottom:2px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+  white-space:nowrap;
+}
+.lb-nav a:hover{ color:#d8e2ea }
+.lb-nav a.active{
+  color:var(--lb-strong);
+  border-bottom-color: var(--lb-accent);
+}
+
+/* Botón */
+.lb-cta{
+  margin-left:auto;
+  background: var(--lb-accent);
+  color:#0a0f0c; font-weight:700; border:0;
+  padding:8px 12px; border-radius:6px; cursor:pointer;
+}
+.lb-cta:hover{ filter:brightness(1.05) }
+
+/* Responsive */
+@media (max-width: 720px){
+  .lb-container{ height:56px; gap:10px }
+  .lb-wordmark{ display:none }
+  .lb-nav{ gap:14px }
+  .lb-cta{ padding:6px 10px; font-weight:600 }
+}

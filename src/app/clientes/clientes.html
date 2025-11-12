@@ -1,0 +1,47 @@
+<section class="panel">
+  <h1>Listado clientes</h1>
+
+  <div *ngIf="loading">Cargando...</div>
+  <div *ngIf="!loading && error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="tabla-ventas-wrap">
+    <table class="tabla-ventas">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th class="num">Saldo</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of clientes">
+          <td>{{ c.Apellido }}, {{ c.Nombre }}</td>
+          <td class="num">{{ (+c.Saldo) | number:'1.0-0' }}</td>
+          <td>
+            <span class="estado" [class.ok]="+c.Status" [class.no]="!+c.Status">
+              {{ +c.Status ? 'Activo ✅' : 'Inactivo ❌' }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!--
+<section class="panel">
+  <h1>Listado clientes</h1>
+
+  <div *ngIf="loading">Cargando...</div>
+  <div *ngIf="!loading && error">{{ error }}</div>
+
+  <ul *ngIf="!loading && !error">
+    <li *ngFor="let c of clientes">
+      {{ c.Apellido }}, {{ c.Nombre }} — Saldo: {{ c.Saldo }}
+      <span [title]="+c.Status ? 'Activo' : 'Inactivo'">
+        {{ +c.Status ? '✅' : '❌' }}
+      </span>
+    </li>
+  </ul>
+</section>
+--> 

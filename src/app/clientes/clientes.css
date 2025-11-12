@@ -1,0 +1,38 @@
+.tabla-ventas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-ventas th,
+.tabla-ventas td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: right;
+}
+
+.tabla-ventas th:first-child,
+.tabla-ventas td:first-child {
+  text-align: left;
+}
+
+.tabla-ventas thead th {
+  background: #4e5155;
+  color: #fff;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.badge.ok {
+  background: #c6f6d5;
+  color: #2f855a;
+}
+
+.badge.no {
+  background: #fed7d7;
+  color: #c53030;
+}
