@@ -70,3 +70,11 @@
   .lb-nav{ gap:14px }
   .lb-cta{ padding:6px 10px; font-weight:600 }
 }
+
+.lb-actions { display:flex; gap:10px; margin-left:auto; align-items:center; }
+
+.lb-logout{
+  background:#1e2723; color:#eaf2ee; border:0;
+  padding:8px 12px; border-radius:6px; cursor:pointer;
+}
+.lb-logout:hover{ filter:brightness(1.1) }

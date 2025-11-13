@@ -1,0 +1,88 @@
+:root{
+  --bg:#0f1417;
+  --card:#161c20;
+  --text:#e6eef3;
+  --muted:#93a4b0;
+  --accent:#2eea82; /* combina con tu botón "Ocultar" */
+  --danger:#ff6b6b;
+  --border:rgba(255,255,255,.08);
+  --input:#0f1417;
+}
+
+*{ box-sizing:border-box }
+
+.login-wrap{
+  min-height: calc(100vh - 64px); /* deja espacio para el header */
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:48px 16px;
+  background: transparent; /* usamos el fondo existente */
+}
+
+.card{
+  width: 100%; max-width: 420px;
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding: 28px;
+  color: var(--text);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  animation: pop .2s ease-out;
+}
+
+@keyframes pop{
+  from{ transform: translateY(6px); opacity:.8 }
+  to{ transform: translateY(0); opacity:1 }
+}
+
+h1{
+  margin:0 0 6px; font-size: 28px; line-height:1.1;
+}
+.subtitle{
+  margin:0 0 18px; color: var(--muted); font-size:14px;
+}
+
+.field{ display:flex; flex-direction:column; gap:6px; margin-bottom:14px }
+.field span{ font-size:13px; color: var(--muted) }
+
+input{
+  width:100%;
+  background: var(--input);
+  color: var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px 12px;
+  outline:none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input:focus{
+  border-color: rgba(46,234,130,.7);
+  box-shadow: 0 0 0 3px rgba(46,234,130,.15);
+}
+input.invalid{ border-color: rgba(255,107,107,.7) }
+
+.btn{
+  width:100%;
+  background: var(--accent);
+  color:#0a0f0c;
+  font-weight:700;
+  border:0; border-radius:10px;
+  padding:12px 14px;
+  cursor:pointer;
+  transition: filter .15s ease, transform .02s ease-in-out;
+}
+.btn:hover{ filter: brightness(1.05) }
+.btn:active{ transform: translateY(1px) }
+.btn[disabled]{ opacity:.6; cursor:not-allowed }
+
+.error{
+  margin-top:10px; color: var(--danger); font-size: 14px;
+}
+.hint{
+  margin-top:16px; color: var(--muted); font-size:12px; text-align:center
+}
+
+/* responsive sutil */
+@media (max-width: 520px){
+  .card{ padding:22px }
+  h1{ font-size:24px }
+}

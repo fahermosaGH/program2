@@ -8,7 +8,7 @@
       <span class="lb-wordmark">Sistema de Administracion de Empresa</span>
     </a>
 
-    <!-- Nav (se puede ocultar/mostrar con tu botón) -->
+    <!-- Nav -->
     <nav class="lb-nav" *ngIf="navVisible">
       <a routerLink="/inicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
       <a routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
@@ -16,10 +16,12 @@
       <a routerLink="/ventas" routerLinkActive="active">Ventas</a>
     </nav>
 
-    <!-- Botón toggle -->
-    <button class="lb-cta" type="button" (click)="barra()">{{ ButName }}</button>
+    <!-- Acciones -->
+   <div class="lb-actions">
+  <button class="lb-cta" type="button" (click)="barra()">{{ ButName }}</button>
+  <button *ngIf="isAuth" class="lb-logout" type="button" (click)="logout()">Salir</button>
+</div>
+
   </div>
 </header>
-
-
 
