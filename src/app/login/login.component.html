@@ -1,0 +1,39 @@
+<div class="login-wrap">
+  <div class="card">
+    <h1>Ingresar</h1>
+    <p class="subtitle">Usá tu usuario para acceder al sistema</p>
+
+    <form #f="ngForm" (ngSubmit)="submit(f)" novalidate>
+      <label class="field">
+        <span>Usuario</span>
+        <input
+          name="username"
+          [(ngModel)]="username"
+          required
+          autocomplete="username"
+          [class.invalid]="f.submitted && !f.controls['username']?.valid"
+        />
+      </label>
+
+      <label class="field">
+        <span>Contraseña</span>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          autocomplete="current-password"
+          [class.invalid]="f.submitted && !f.controls['password']?.valid"
+        />
+      </label>
+
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Ingresando…' : 'Entrar' }}
+      </button>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+    </form>
+
+    <p class="hint">Tip: admin / admin (demo)</p>
+  </div>
+</div>

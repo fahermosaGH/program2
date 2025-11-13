@@ -4,22 +4,64 @@
   <div *ngIf="loading">Cargando...</div>
   <div *ngIf="!loading && error">{{ error }}</div>
 
-  <table *ngIf="!loading && !error" class="tabla-ventas">
-    <thead>
-      <tr>
-        <th>{{ suc[0] }}</th>
-        <th *ngFor="let c of cols">{{ suc[c.labelIndex] }}</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let v of ventas; let i = index">
-        <td>{{ mes[i] || (i + 1) }}</td>
-        <td *ngFor="let c of cols">{{ $any(v)[c.prop] | number:'1.0-0' }}</td>
-        <td>{{ totalFila(v) | number:'1.0-0' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Toolbar -->
+<div class="toolbar" *ngIf="!loading && !error">
+  <div class="left">
+    <button *ngIf="isAdmin" class="btn" (click)="toggleEdit()">
+      {{ editMode ? 'Cancelar' : 'Editar' }}
+    </button>
+    <button *ngIf="isAdmin && editMode" class="btn primary" (click)="guardar()">
+      Guardar
+    </button>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Botones tipo de gráfico -->
+  <div class="chart-type" *ngIf="showChart">
+    <button class="btn" [class.primary]="isLine" (click)="setChartType('line')">Líneas</button>
+    <button class="btn" [class.primary]="!isLine" (click)="setChartType('bar')">Barras</button>
+  </div>
+</div>
+
+
+  <!-- Layout dividido: tabla fija + gráfico a la derecha -->
+  <div class="ventas-layout" *ngIf="!loading && !error">
+    <!-- Tabla (ancho fijo) -->
+    <div class="tabla-wrap">
+      <table class="tabla-ventas">
+        <thead>
+          <tr>
+            <th class="col-mes">{{ suc[0] }}</th>
+            <th *ngFor="let c of cols" class="col-num">{{ suc[c.labelIndex] }}</th>
+            <th class="col-total">Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let v of (editMode ? ventasEdit : ventas); let i = index">
+            <td class="col-mes">{{ mes[i] || (i + 1) }}</td>
+
+            <td class="col-num" *ngFor="let c of cols">
+              <ng-container *ngIf="editMode; else viewCell">
+                <input type="number" min="0" [(ngModel)]="$any(v)[c.prop]">
+              </ng-container>
+              <ng-template #viewCell>
+                {{ $any(v)[c.prop] | number:'1.0-0' }}
+              </ng-template>
+            </td>
+
+            <td class="col-total">{{ totalFila($any(v)) | number:'1.0-0' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Gráfico a la derecha (visible por defecto) -->
+    <div class="chart-wrap" *ngIf="showChart">
+      <div class="chart-card">
+        <canvas id="ventasChart"></canvas>
+      </div>
+    </div>
+  </div>
 </section>
-
-
